@@ -21,9 +21,9 @@ def get_birthdays_per_week(users):
 
         for week_date in week_dates:
             if user_birthday_month_day == week_date.strftime(month_date_pattern):
-
-                day_key = 'Monday' if week_date.strftime('%A') == 'Saturday' or week_date.strftime(
-                    '%A') == 'Sunday' else week_date.strftime('%A')
+                day_key = week_date.strftime('%A')
+                if day_key == 'Saturday' or day_key == 'Sunday':
+                    day_key = 'Monday'
                 if birthday_users.get(day_key) is not None:
                     birthday_users[day_key].append(user_name)
                 else:
